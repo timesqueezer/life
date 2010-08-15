@@ -1,10 +1,11 @@
+#!/usr/bin/env python
+
 import pygame
 
-pygame.inti()
+pygame.init()
 
 RES = (800, 600)
 
-screen = pygame.display.set_mode(RES)
 
 class Cell:
 	def __init__(posx, posy):
@@ -12,7 +13,6 @@ class Cell:
 		self.posx = posx
 		self.posy = posy
 		self.next_status = False
-		self.nb_left = 
 
 	def check_neighbors():
 		nb_alive = 0
@@ -39,7 +39,9 @@ class Cell:
 
 		if nb_alive < 2:
 			self.next_status = False
-		elif nb_alive > 2 and nb_alive < 4:
+		elif nb_alive >= 2 and nb_alive =< 4:
+			self.next_status = True
+		elif nb_alive == 3:
 			self.next_status = True
 		elif nb_alive > 4:
 			self.next_status = False
@@ -49,6 +51,19 @@ class Cell:
 		return (self.posx, self.posy)
 
 	def aging():
+		if self.next_status == False:
+			self.alive = False
+
+class Game:
+	def __init__(self, res):
+		self.screen = pygame.display.set_mode(res)
+		self.cells = []
 
 
-	
+	def add_cell(self, posx, posy):
+		self.cells
+
+
+if __name__ == "__main__":
+	game = Game(RES)
+
