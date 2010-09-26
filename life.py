@@ -108,6 +108,11 @@ class Game:
                     self.delay -= 100
                 if event.key == pygame.K_MINUS and self.delay < 1000:
                     self.delay += 100
+                if event.key == pygame.K_c:
+                    for i in xrange(self.size[0]):
+                        for j in xrange(self.size[1]):
+                            self.SetCell(i,j,False)
+
         p = pygame.mouse.get_pressed()
         if p[0]:
             self.SetCell(pygame.mouse.get_pos()[0] / self.squaresize, pygame.mouse.get_pos()[1] / self.squaresize, True)
@@ -124,6 +129,11 @@ class Game:
                 else:
                     s = self.dead
                 self.screen.blit(s, (i*self.squaresize, j*self.squaresize))
+        for i in xrange(self.size[0]):
+            pygame.draw.line(self.screen, (50,50,50),(i*self.squaresize,0),(self.squaresize*i,self.size[0]*self.squaresize)) 
+        for j in xrange(self.size[1]):
+            pygame.draw.line(self.screen, (50,50,50), (0,
+                j*self.squaresize),(self.size[0]*self.squaresize, j*self.squaresize)) 
         pygame.display.flip()
 
 if __name__ == "__main__":
