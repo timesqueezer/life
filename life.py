@@ -71,7 +71,13 @@ class Game:
                 num += self.GetAt(x-1, y+1)
                 num += self.GetAt(x,   y+1)
                 num += self.GetAt(x+1, y+1)
-                cells2[x][y] =  (num <= 4 and num >=2)
+                if (num > 3 or num <2):
+                    cells2[x][y] = False
+                elif num == 3:
+                    cells2[x][y] = True
+                else:
+                    cells2[x][y] = self.cells[x][y]
+
         self.cells = cells2
 
     def MainLoop(self):
@@ -121,9 +127,6 @@ class Game:
         pygame.display.flip()
 
 if __name__ == "__main__":
-
-    print (4 is int)
-
     SIZE = (int(sys.argv[1]),int(sys.argv[2]))
     game = Game(SIZE, int(sys.argv[3]), 200)
 
